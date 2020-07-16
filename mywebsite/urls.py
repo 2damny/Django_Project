@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #블로그를 만들기 위해 필요한 라이브러리 추가
+#웹사이트 넘 어렵
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
