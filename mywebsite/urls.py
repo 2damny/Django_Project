@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #블로그를 만들기 위해 필요한 라이브러리 추가
-#웹사이트 넘 어렵
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
@@ -22,6 +21,12 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+# blog주소로 들어오면 블로그앱(blog밑에 만들어둔 urls.py)이 처리하게 해주고
+# 기본 사이트 주소로 들어오면 블로그로 넘겨주게 구현
+# http://localhost:9000/blog/
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path("blog/", include("blog.urls")),
+    path("", RedirectView.as_view(url="blog/", permanent=True)),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# 자바스크립트,css 같은 정적파일들을 처리할 수 있도록 셋팅
