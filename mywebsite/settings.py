@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "blog.apps.BlogConfig",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -105,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 #서울시간을 사용한다.
 TIME_ZONE = 'Asia/Seoul'
@@ -126,3 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS= [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# models.py 에서 ImageField를 사용하기 위해
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

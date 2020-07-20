@@ -28,5 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("blog/", include("blog.urls")),
     path("", RedirectView.as_view(url="blog/", permanent=True)),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
 # 자바스크립트,css 같은 정적파일들을 처리할 수 있도록 셋팅
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
